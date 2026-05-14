@@ -13,3 +13,10 @@ two:
   finished_at: 2026-04-11 11:46:25
   note: MyString
   user: two
+
+archer_attendance:
+  worked_on: 2026-04-11
+  started_at:
+  finished_at:
+  note:
+  user: archer

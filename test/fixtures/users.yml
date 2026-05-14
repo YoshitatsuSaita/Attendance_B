@@ -7,3 +7,15 @@ one:
 two:
   name: MyString2
   email: two@example.com
+
+michael:
+  name: michael
+  email: michael@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  admin: true
+
+archer:
+  name: archer
+  email: archer@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  admin: false
