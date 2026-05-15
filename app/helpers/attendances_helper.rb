@@ -10,6 +10,16 @@ module AttendancesHelper
     false
   end
 
+  def total_working_times(attendances)
+    attendances.sum do |day|
+      if day.started_at.present? && day.finished_at.present?
+        working_times(day.started_at, day.finished_at).to_f
+      else
+        0.0
+      end
+    end
+  end
+
   # 出勤時間と退勤時間を受け取り、在社時間を計算して返します。
   def working_times(start, finish)
     rounded_start  = start.change(min: format_quarter_hour(start), sec: 0)

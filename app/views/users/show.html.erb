@@ -44,7 +44,7 @@
   <% end %>
 </div>
 <div>
-  <table class="table table-bordered table-condensed table-hover"   id="table-attendances">
+  <table class="table table-bordered table-condensed table-hover table-attendances">
     <thead>
       <tr>
         <th rowspan="2">日付</th>
@@ -78,8 +78,7 @@
           <td><%= format_quarter_hour(day.finished_at) if day.finished_at.present? %></td>
           <td>
             <% if day.started_at.present? && day.finished_at.present? %>
-              <%= str_times = working_times(day.started_at, day.finished_at) %>
-              <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
+              <%= working_times(day.started_at, day.finished_at) %>
             <% end %>
           </td>
           <td><%= day.note %></td>
@@ -98,7 +97,7 @@
       <tr>
         <td colspan="2"><%= @attendances.count %></td>
         <td colspan="2"><%= format_basic_info(@user.work_time).to_f * @worked_sum %></td>
-        <td colspan="2"><%= format("%.2f", @total_working_times.to_f) %></td>
+        <td colspan="2"><%= format("%.2f", total_working_times(@attendances)) %></td>
       </tr>
     </tfoot>    
   </table>

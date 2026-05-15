@@ -57,7 +57,7 @@ p {
 
 /* header */
 
-#logo {
+.logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -68,7 +68,7 @@ p {
   font-weight: bold;
 }
 
-#logo:hover {
+.logo:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -86,7 +86,7 @@ p {
 
 /* error_messages */
 
-#error_explanation {
+.error-explanation {
   color: red;
   ul {
     color: red;

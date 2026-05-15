@@ -96,10 +96,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.turbo_stream
     end
-    redirect_to users_url
   end
 
   def edit_all_basic_info
+    @user = User.new
   end
 
   def update_all_basic_info
