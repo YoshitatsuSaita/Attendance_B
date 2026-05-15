@@ -40,4 +40,13 @@ module AttendancesHelper
   def format_quarter_hour(time)
     format("%02d", (time.min / 15) * 15)
   end
+
+  def tomorrow_finished(started_at, finished_at)
+    if started_at.present? && started_at.to_date + 1 ==  finished_at.to_date
+      finished_at.hour + 24
+    else
+      finished_at.hour
+    end
+
+  end
 end

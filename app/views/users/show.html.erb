@@ -74,7 +74,7 @@
           </td>
           <td><%= format("%02d", day.started_at.hour) if day.started_at.present? %></td>
           <td><%= format_quarter_hour(day.started_at) if day.started_at.present? %></td>
-          <td><%= format("%02d", day.finished_at.hour) if day.finished_at.present? %></td>
+          <td><%= format("%02d", tomorrow_finished(day.started_at, day.finished_at)) if day.finished_at.present? %></td>
           <td><%= format_quarter_hour(day.finished_at) if day.finished_at.present? %></td>
           <td>
             <% if day.started_at.present? && day.finished_at.present? %>

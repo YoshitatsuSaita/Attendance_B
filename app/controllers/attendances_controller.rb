@@ -34,6 +34,19 @@ class AttendancesController < ApplicationController
       attendances_params.each do |id, item|
         attendance = Attendance.find(id)
         next if attendance.worked_on > Date.current
+          if item[:started_at].present?
+            t = Time.parse(item[:started_at])
+            item[:started_at] = attendance.worked_on.to_time.in_time_zone.change(
+                                  hour: t.hour, min: t.min, sec: 0)
+          end
+            if item[:finished_at].present?
+              t = Time.parse(item[:finished_at])
+              started = item[:started_at]  # すでに変換済みのdatetime
+              base_date = (started && t.hour * 60 + t.min < started.hour * 60 + started.min) ?
+                            attendance.worked_on + 1 :
+                            attendance.worked_on
+              item[:finished_at] = base_date.to_time.in_time_zone.change(hour: t.hour, min: t.min, sec: 0)
+            end
         attendance.update!(item)
       end
     end
